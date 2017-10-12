@@ -2,7 +2,7 @@
 Parse.Cloud.define("findCases", function(request, response) {
   
   var query = new Parse.Query(Parse.User);
-  query.equalTo("category", "Patient");  // find all the women
+  query.equalTo("objectId", request.params.objectID);  // Find user with this ID
   query.find({
     success: function(patients) {
       
