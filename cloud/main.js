@@ -4,7 +4,10 @@ Parse.Cloud.define("findCases", function(request, response) {
   var query = new Parse.Query(Parse.User);
   query.equalTo("objectId", request.params.objectID);  // Find user with this ID
   query.find({
+    
     success: function(patients) {
+      
+      let user = patients[0];
       
       var query = new Parse.Query("Cases");
     query.equalTo("username", request.params.username);
@@ -19,14 +22,14 @@ Parse.Cloud.define("findCases", function(request, response) {
         
         var acl = new Parse.ACL();
         //acl.setRoleWriteAccess("admins", true);
-        acl.setReadAccess(req.user, true);
-        acl.setWriteAccess(req.user, true);
+        acl.setReadAccess(user, true);
+        acl.setWriteAccess(user, true);
         object.setACL(acl);
         
         object.save(null, { useMasterKey: true });
       }
     
-      response.success("success" + patients[0].get('username'));
+      response.success("success - " + patients[0].get('username'));
       //response.success(sum);
     })
     .catch(() =>  {
