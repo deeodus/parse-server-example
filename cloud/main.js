@@ -7,7 +7,7 @@ Parse.Cloud.define('hello', function(req, res) {
 Parse.Cloud.define("query", function(request, response) {
   const query = new Parse.Query("Cases");
   query.equalTo("caseNo", request.params.caseNo);
-    .find()
+    .find({ useMasterKey: true })
     .then((results) => {
       //let sum = 0;
       //for (let i = 0; i < results.length; ++i) {
