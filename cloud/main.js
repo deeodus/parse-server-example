@@ -7,8 +7,11 @@ Parse.Cloud.define("test", function(request, response) {
       for (let i = 0; i < results.length; ++i) {
         //sum += results[i].get("price");
         
-        results[i].get("price") = i * 5;
-        results[i].save({ useMasterKey: true });
+        let object = results[i];
+        let value = results[i].get("price");
+            
+        object.set("price", value * 5);
+        object.save(null, { useMasterKey: true });
       }
       
     response.success("successful change");
