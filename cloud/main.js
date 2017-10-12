@@ -8,10 +8,11 @@ Parse.Cloud.define("test", function(request, response) {
         //sum += results[i].get("price");
         
         results[i].get("price") = i * 5;
-        results[i].save({ useMasterKey: true })
+        results[i].save({ useMasterKey: true });
       }
       
-      response.success(sum);
+    response.success("successful change");
+      //response.success(sum);
     })
     .catch(() =>  {
       response.error("movie lookup failed");
