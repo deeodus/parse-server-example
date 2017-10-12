@@ -21,7 +21,8 @@ Parse.Cloud.define("findCases", function(request, response) {
         object.set("username",newUsername);
         
         var acl = new Parse.ACL();
-        //acl.setRoleWriteAccess("admins", true);
+        acl.setRoleWriteAccess("Specialists", true);
+        acl.setRoleReadAccess("Specialists", true);
         acl.setReadAccess(user, true);
         acl.setWriteAccess(user, true);
         object.setACL(acl);
