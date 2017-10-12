@@ -1,4 +1,9 @@
 
+Parse.Cloud.define('hello', function(req, res) {
+  res.success('Hello this is Dee and ' + req.params.name);
+});
+
+
 Parse.Cloud.define('test', function(request, response) {
   const query = new Parse.Query('Cases');
   query.equalTo('caseNo', request.params.caseNo);
@@ -9,7 +14,7 @@ Parse.Cloud.define('test', function(request, response) {
         //sum += results[i].get("stars");
       //}
       //response.success(sum / results.length);
-      response.success(results);
+      response.success('Object ID' + results[0].get('objectId'));
     })
     .catch(() =>  {
       response.error('case lookup failed');
