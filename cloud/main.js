@@ -1,10 +1,5 @@
 
-Parse.Cloud.define('hello', function(req, res) {
-  res.success('Hello this is Dee and ' + req.params.name);
-});
-
-
-Parse.Cloud.define("query", function(request, response) {
+Parse.Cloud.define("test", function(request, response) {
   const query = new Parse.Query("Cases");
   query.equalTo("caseNo", request.params.caseNo);
     .find({ useMasterKey: true })
