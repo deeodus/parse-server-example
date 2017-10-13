@@ -30,7 +30,7 @@ Parse.Cloud.define("findCases", function(request, response) {
         object.save(null, { useMasterKey: true });
       }
     
-      response.success("success - " + patients[0].get('username'));
+      response.success("success:" + results.length);
       //response.success(sum);
     })
     .catch(() =>  {
